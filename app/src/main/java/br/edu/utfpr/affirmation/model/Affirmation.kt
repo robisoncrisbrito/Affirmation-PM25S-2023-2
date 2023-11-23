@@ -1,3 +1,9 @@
 package br.edu.utfpr.affirmation.model
 
-data class Affirmation (val stringResourdId : Int )
+import androidx.annotation.DrawableRes
+import androidx.annotation.StringRes
+
+data class Affirmation (
+    @StringRes  val stringResourdId : Int,
+    @DrawableRes val imageResourceId: Int
+)
