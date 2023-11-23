@@ -3,6 +3,8 @@ package br.edu.utfpr.affirmation
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.TextView
+import androidx.recyclerview.widget.RecyclerView
+import br.edu.utfpr.affirmation.adapter.ItemAdapter
 import br.edu.utfpr.affirmation.data.Datasource
 
 class MainActivity : AppCompatActivity() {
@@ -10,8 +12,11 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val tvContador = findViewById<TextView>( R.id.tvContador )
-        tvContador.text = Datasource().loadAffirmation().size.toString()
+        val myDataset = Datasource().loadAffirmation()
 
+        val recyclerView = findViewById<RecyclerView>( R.id.recycler_view )
+        recyclerView.adapter = ItemAdapter( this, myDataset )
+
+        recyclerView.setHasFixedSize( true )
     }
 }
